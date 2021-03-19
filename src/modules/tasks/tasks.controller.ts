@@ -7,15 +7,15 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateTaskDto } from '../dto/create-task-dto';
-import { Task } from '../schemas/task.schema';
-import { TasksService } from '../services/tasks.service';
+import { CreateTaskDto } from './dto/create-task-dto';
+import { Task } from './schemas/task.schema';
+import { TasksService } from './tasks.service';
 
 
 @Controller('tasks')
 export class TasksController {
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private readonly tasksService: TasksService) {}
 
   @Get()
   getTasks(): Promise<Task[]> {
