@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateTaskDto } from './dto/create-task-dto';
+import { TaskDto } from './dto/task.dto';
 import { Task } from './schemas/task.schema';
 import { TasksService } from './tasks.service';
 
@@ -28,13 +28,13 @@ export class TasksController {
   }
 
   @Post()
-  createTask(@Body() task: CreateTaskDto): Promise<Task> {
+  createTask(@Body() task: TaskDto): Promise<Task> {
     return this.tasksService.createTask(task);
   }
 
   @Put(':taskId')
   updateTask(
-    @Body() task: CreateTaskDto,
+    @Body() task: TaskDto,
     @Param('taskId') taskId,
   ): Promise<Task> {
     return this.tasksService.updateTask(task, taskId);

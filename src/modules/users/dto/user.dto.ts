@@ -1,16 +1,17 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-export class CreateTaskDto {
+export class UserDto {
   @IsNotEmpty()
   @IsString()
-  title: string;
+  first_name: string;
 
   @IsNotEmpty()
   @IsString()
-  description: string;
-
-  done: boolean;
+  last_name: string;
 
   @IsNotEmpty()
   @IsEmail()
   email: string;
+
+  @IsNotEmpty()
+  password: string;
 }

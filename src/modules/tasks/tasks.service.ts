@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Task, TaskDocument } from './schemas/task.schema';
-import { CreateTaskDto } from './dto/create-task-dto';
+import { TaskDto } from './dto/task.dto';
 
 @Injectable()
 export class TasksService {
@@ -17,12 +17,12 @@ export class TasksService {
     return this.taskModel.findById(taskId);
   }
 
-  async createTask(task: CreateTaskDto): Promise<Task> {
+  async createTask(task: TaskDto): Promise<Task> {
     const createTask = new this.taskModel(task);
     return createTask.save();
   }
 
-  async updateTask(task: CreateTaskDto, taskId: string): Promise<Task> {
+  async updateTask(task: TaskDto, taskId: string): Promise<Task> {
     return this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
   }
 
