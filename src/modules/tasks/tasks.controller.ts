@@ -11,10 +11,8 @@ import { TaskDto } from './dto/task.dto';
 import { Task } from './schemas/task.schema';
 import { TasksService } from './tasks.service';
 
-
 @Controller('tasks')
 export class TasksController {
-
   constructor(private readonly tasksService: TasksService) {}
 
   @Get()
@@ -33,10 +31,7 @@ export class TasksController {
   }
 
   @Put(':taskId')
-  updateTask(
-    @Body() task: TaskDto,
-    @Param('taskId') taskId,
-  ): Promise<Task> {
+  updateTask(@Body() task: TaskDto, @Param('taskId') taskId): Promise<Task> {
     return this.tasksService.updateTask(task, taskId);
   }
 
@@ -44,5 +39,4 @@ export class TasksController {
   deleteTask(@Param('taskId') taskId): Promise<any> {
     return this.tasksService.deleteTask(taskId);
   }
-
 }
